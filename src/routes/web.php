@@ -22,3 +22,8 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('auth.register');
 });
+
+// 便宜　打刻ページの表示
+Route::get('/', function () {
+    return view('auth.stamp');
+});
