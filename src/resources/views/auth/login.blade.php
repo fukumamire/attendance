@@ -12,7 +12,7 @@
   <form class="form" action="/login" method="post">
     @csrf
     <div class="form__group">
-      <input type="email" name="email" placeholder="メールアドレス" required>
+      <input type="email" name="email" placeholder="メールアドレス"  value="{{ old('email') }}" required  />
     </div>
     <div class="form__group">
       <input type="password" name="password" placeholder="パスワード" required>

@@ -12,13 +12,13 @@
   <form class="form" action="/register" method="post">
     @csrf
     <div class="form__group">
-      <input type="text" name="name" placeholder="名前" >
+      <input type="text" name="name" placeholder="名前" value="{{ old('name') }}"/ >
     </div>
     <div class="form__group">
-        <input type="email" name="email" placeholder="メールアドレス" >
+        <input type="email" name="email" placeholder="メールアドレス" value="{{ old('email') }}" />
     </div>
     <div class="form__group">
-      <input type="password" name="password" placeholder="パスワード">
+      <input type="password" name="password" placeholder="パスワード" />
     </div>
     <div class="form__group">
       <input type="password" name="password_confirmation" placeholder="確認用パスワード" >
