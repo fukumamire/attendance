@@ -157,4 +157,7 @@ return [
         ]),
     ],
 
+
+    'creates_new_users' => App\Http\Controllers\AuthController::class,
+
 ];

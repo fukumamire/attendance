@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
+use App\Http\Controllers\AuthController;
+use Laravel\Fortify\Contracts\CreatesNewUsers;
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -27,4 +30,9 @@ class AuthServiceProvider extends ServiceProvider
 
         //
     }
+    public function register()
+    {
+        $this->app->bind(CreatesNewUsers::class, AuthController::class);
+    }
+
 }

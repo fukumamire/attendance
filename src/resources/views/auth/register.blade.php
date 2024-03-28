@@ -13,12 +13,24 @@
     @csrf
     <div class="form__group">
       <input type="text" name="name" placeholder="名前" value="{{ old('name') }}"/ >
+
+      @error('name')
+        <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
     </div>
     <div class="form__group">
         <input type="email" name="email" placeholder="メールアドレス" value="{{ old('email') }}" />
+
+        @error('email')
+          <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
     </div>
     <div class="form__group">
       <input type="password" name="password" placeholder="パスワード" />
+
+      @error('password')
+        <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
     </div>
     <div class="form__group">
       <input type="password" name="password_confirmation" placeholder="確認用パスワード" >
