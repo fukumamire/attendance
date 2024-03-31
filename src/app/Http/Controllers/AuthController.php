@@ -14,9 +14,10 @@ class AuthController extends Controller implements CreatesNewUsers
     public function create(array $input): Authenticatable
     {
         $validatedData = Validator::make($input, [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|regex:/^[^ ]+ [^ ]+(?: [^ ]+)?$/',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+            'password_confirmation' => 'required|string|min:8',
         ])->validate();
 
         $user = User::create([
