@@ -17,26 +17,28 @@ use App\Http\Controllers\AuthController;
 
 // 会員登録ページ
 // 会員登録画面の表示
-Route::get('/register', [AuthController::class, 'create'])->middleware('guest')->name('register');
+Route::get('/register', [AuthController::class, 'showRegistrationForm'])->middleware('guest')->name('register');
+
+// Route::get('/register', [AuthController::class, 'create'])->middleware('guest')->name('register');
 
 // 会員登録処理　register.storeはルート名
-Route::post('/register', [AuthController::class, 'store'])->middleware('guest')->name('register.store');
+Route::post('/register', [AuthController::class, 'create'])->middleware('guest')->name('register.store');
 
 // ログインページ
 // Route::get('/login', function () {
 //     return view('auth.login');
 // });
-Route::post('/login', [AuthController::class, 'store'])->middleware('guest')->name('login');
+Route::post('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
 
 // ログアウト処理
-Route::post('/logout', [AuthController::class, 'destroy'])->middleware('auth')->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 
 // 打刻ページの表示
-// Route::get('/', function () {
-//     return view('auth.stamp');
-// });
-
 Route::get('/', function () {
     return view('auth.stamp');
-})->name('home');
+})->middleware('auth')->name('home');
+
+// Route::get('/', function () {
+//     return view('auth.stamp');
+// })->name('home');
