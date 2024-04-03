@@ -31,13 +31,15 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Fortify::ignoreRoutes(); // Fortifyのデフォルトルートを無効にする
+        // Fortify::ignoreRoutes(); // Fortifyのデフォルトルートを無効にする
+        Fortify::createUsersUsing(CreateNewUser::class);
 
-        // 会員登録画面の表示
-        Route::get('/register', [AuthController::class, 'showRegistrationForm'])->middleware('guest')->name('register');
 
-        // 会員登録処理　register.storeはルート名
-        Route::post('/register', [AuthController::class, 'create'])->middleware('guest')->name('register.store');
+        //  自分で作成したlogin.blade.php（ログイン画面）画面が表示される
+        Fortify::loginView(function () {
+            return view('auth.login');
+        });
+
 
         // Fortify::registerView(function () {
         //     return view('auth.register');

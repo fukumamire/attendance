@@ -9,7 +9,7 @@
   <div class="register-form__heading">
     <h2>会員登録</h2>
   </div>
-  <form class="form" action="/register" method="post">
+  <form class="form" action="{{route('register')}}" method="post">
     @csrf
     <div class="form__group">
       <input type="text" name="name" placeholder="名前" value="{{ old('name') }}"/ >
@@ -39,7 +39,7 @@
         <div class="alert alert-danger">{{ $message }}</div>
       @enderror
     </div>
-    
+
     <div class="form__button">
       <button type="submit" class="register-button">会員登録</button>
     </div>
